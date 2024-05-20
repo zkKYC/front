@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === 'production';
+const repoName = 'zkKYC/front'; // Replace with your GitHub repository name
+
 const nextConfig = {
   output: "export",
-  basePath: '/front', // replace 'your-repo-name' with the name of your GitHub repository
-  assetPrefix: '/front', // replace 'your-repo-name' with the name of your GitHub repository
+  basePath: isProd ? `/${repoName}` : '',
+  assetPrefix: isProd ? `/${repoName}/` : '',
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
