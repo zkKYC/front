@@ -24,14 +24,17 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: ./src
+
 
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./src
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
