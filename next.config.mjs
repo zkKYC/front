@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'zkKYC/front'; // Replace with your GitHub repository name
+const repoName = 'front'; // Replace with your GitHub repository name
 
 const nextConfig = {
   output: "export",
