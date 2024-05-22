@@ -1,8 +1,8 @@
 import { ethers } from "ethers";
 
-export const signMessage = () => {
-    const provider = new ethers.providers.Web3Provider((window as any).ethereum);
-    const signer = provider.getSigner();
+export const signMessage = async () => {
+    const provider = new ethers.BrowserProvider((window as any).ethereum);
+    const signer = await provider.getSigner();
 
     try {
         signer.signMessage("Hello World").then((result) => {
