@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import Image from "next/image";
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 import Metamask from "../../metamask";
 import { signMessage } from "@/utils/sign";
 
-interface ClientStatus{
+interface ClientStatus {
   isConnected: boolean;
   address?: string;
 }
@@ -20,8 +20,10 @@ const Button = () => {
     const { ethereum } = window as any;
     if (ethereum) {
       sethaveMetamask(true);
-      
-      const accounts: string[] = await ethereum.request({ method: "eth_accounts" });
+
+      const accounts: string[] = await ethereum.request({
+        method: "eth_accounts",
+      });
       if (accounts.length > 0) {
         setClientStatus({
           isConnected: true,
@@ -37,7 +39,6 @@ const Button = () => {
     }
   };
 
-
   const connectWeb3 = async () => {
     //console.log("In ConnectWeb3: Start");
     try {
@@ -47,13 +48,13 @@ const Button = () => {
         console.log("Metamask not detected");
         return;
       }
-      
-      const accounts: string[] = await ethereum.request({method: "eth_requestAccounts"});
+
+      const accounts: string[] = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
 
       //console.log("In ConnectWeb3: After")
       //provider = new ethers.providers.Web3Provider((window as any).ethereum);
-
-
 
       setClientStatus({
         isConnected: true,
@@ -64,28 +65,30 @@ const Button = () => {
     }
   };
 
-
   useEffect(() => {
     checkConnection();
   }, []);
 
-    return (
-      // <button className="h-12 rounded-lg bg-black font-bold px-5">Connect</button>
-      <div>
-            {!haveMetamask ? (
-              <Metamask />
-            ) : clientStatus.isConnected ? (
-              <span className="flex items-center h-12 px-5 rounded-lg bg-black font-bold">
-                <h2>{clientStatus.address} ✅</h2>
-              </span>
-            ) : (
-              <>
-                <button className="h-12 rounded-lg bg-black font-bold px-5" onClick={connectWeb3}>
-                  Connect Wallet
-                </button>
-              </>
-            )}
-          </div>
-    );
-  };
-  export default Button;
+  return (
+    // <button className="h-12 rounded-lg bg-black font-bold px-5">Connect</button>
+    <div>
+      {!haveMetamask ? (
+        <Metamask />
+      ) : clientStatus.isConnected ? (
+        <span className="flex items-center h-12 px-5 rounded-lg bg-black font-bold">
+          <h2>{clientStatus.address} ✅</h2>
+        </span>
+      ) : (
+        <>
+          <button
+            className="h-12 rounded-lg bg-black font-bold text-white px-5"
+            onClick={connectWeb3}
+          >
+            Connect Wallet
+          </button>
+        </>
+      )}
+    </div>
+  );
+};
+export default Button;
