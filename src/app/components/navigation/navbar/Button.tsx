@@ -75,7 +75,7 @@ const Button = () => {
       {!haveMetamask ? (
         <Metamask />
       ) : clientStatus.isConnected ? (
-        <span className="flex items-center h-12 px-5 rounded-lg bg-black font-bold">
+        <span className="flex items-center h-12 px-5 rounded-lg bg-black font-bold text-white">
           <h2>{clientStatus.address} ✅</h2>
         </span>
       ) : (
