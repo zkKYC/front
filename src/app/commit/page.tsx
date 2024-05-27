@@ -1,7 +1,7 @@
 import React from "react";
 
 const Commit = () => {
-  return <div>Commit</div>;
+  return <div>Комит</div>;
 };
 
 export default Commit;
