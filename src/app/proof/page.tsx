@@ -1,7 +1,7 @@
 import React from "react";
 
 const Proof = () => {
-  return <div>Proof</div>;
+  return <div>Доказалтеств</div>;
 };
 
 export default Proof;

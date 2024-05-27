@@ -11,30 +11,44 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-full">
             <Logo />
             <ul className="hidden md:flex gap-x-6 text-black">
-              
               <li>
-                <Link href="/registration" className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md">
-                  <p>Registration</p>
+                <Link
+                  href="/registration"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
+                  <p>Регистрация</p>
                 </Link>
               </li>
               <li>
-                <Link href="/my-sbts" className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md">
+                <Link
+                  href="/my-sbts"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
                   <p>My SBTs</p>
                 </Link>
               </li>
               <li>
-                <Link href="/commit" className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md">
+                <Link
+                  href="/commit"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
                   <p>Commit</p>
                 </Link>
               </li>
               <li>
-                <Link href="/check" className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md">
+                <Link
+                  href="/check"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
                   <p>Check</p>
                 </Link>
               </li>
               <li>
-                <Link href="/proof" className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md">
-                  <p>Proof</p>
+                <Link
+                  href="/proof"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
+                  <p>Доказателства</p>
                 </Link>
               </li>
             </ul>
