@@ -51,6 +51,14 @@ const Navbar = () => {
                   <p>Доказателства</p>
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/domain"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
+                  <p>Домен</p>
+                </Link>
+              </li>
             </ul>
             <Button />
           </div>
