@@ -21,10 +21,10 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/my-sbts"
+                  href="/sbts"
                   className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
                 >
-                  <p>My SBTs</p>
+                  <p>SBTs</p>
                 </Link>
               </li>
               <li>
@@ -32,15 +32,7 @@ const Navbar = () => {
                   href="/commit"
                   className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
                 >
-                  <p>Commit</p>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/check"
-                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
-                >
-                  <p>Check</p>
+                  <p>Комит</p>
                 </Link>
               </li>
               <li>
@@ -56,7 +48,7 @@ const Navbar = () => {
                   href="/domain"
                   className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
                 >
-                  <p>Домен</p>
+                  <p>Домены</p>
                 </Link>
               </li>
             </ul>

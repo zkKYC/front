@@ -1,24 +1,24 @@
-import React from "react";
 import {
-  Box,
   Container,
   Heading,
   Text,
-  TabList,
-  Tab,
-  Tabs,
-  TabPanels,
-  TabPanel,
   Input,
+  Box,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
   Button,
 } from "@chakra-ui/react";
+import React from "react";
 
-const Proof = () => {
+const MySbts = () => {
   return (
     <Container>
       <Box textAlign="center" py={10} px={6}>
         <Heading as="h2" size="xl" mt={6} mb={2}>
-          Доказательства
+          Управление SBTs
         </Heading>
         <Text color={"gray.500"}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed risus
@@ -29,36 +29,39 @@ const Proof = () => {
 
       <Tabs className="my-10">
         <TabList>
-          <Tab>Возраст</Tab>
-          <Tab>Прохождения KYC</Tab>
-          <Tab>Страна</Tab>
-          <Tab>Хеш документа</Tab>
-          <Tab>Регион</Tab>
+          <Tab>setURI</Tab>
+          <Tab>mint</Tab>
+          <Tab>burn</Tab>
         </TabList>
 
         <TabPanels>
           <TabPanel>
-            <Input placeholder="Секрет" className="my-3" />
-            <Input placeholder="Дата рождения" className="my-3" />
+            <Input placeholder="Id" className="my-3" />
+            <Input placeholder="URI" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
           </TabPanel>
           <TabPanel>
-            <Input placeholder="Хеш" className="my-3" />
-            <Input placeholder="Дерево меркла" className="my-3" />
+            <Input placeholder="To" className="my-3" />
+            <Input placeholder="Id" className="my-3" />
             <Input placeholder="Amount" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
           </TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel>
+            <Input placeholder="From" className="my-3" />
+            <Input placeholder="Id" className="my-3" />
+            <Input placeholder="Amount" className="my-3" />
+            <Button colorScheme="red" className="my-3">
+              Oтправить
+            </Button>
+          </TabPanel>
         </TabPanels>
       </Tabs>
     </Container>
   );
 };
 
-export default Proof;
+export default MySbts;
