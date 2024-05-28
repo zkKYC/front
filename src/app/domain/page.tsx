@@ -21,9 +21,7 @@ const Domain = () => {
           Домены
         </Heading>
         <Text color={"gray.500"}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed risus
-          ipsum. Proin eget auctor lacus. Integer eu ultrices lectus. Integer
-          viverra pretium eros ut aliquet.
+          Тут вы можете управлять доменным именем своего адреса.
         </Text>
       </Box>
 
@@ -36,10 +34,45 @@ const Domain = () => {
         </TabList>
 
         <TabPanels>
-          <TabPanel>Регистрация</TabPanel>
-          <TabPanel>Продление</TabPanel>
-          <TabPanel>Удаление</TabPanel>
-          <TabPanel>Продажа</TabPanel>
+          <TabPanel>
+            {" "}
+            <Input placeholder="Имя" className="my-3" />
+            <Input
+              placeholder="Период в годах"
+              type="number"
+              className="my-3"
+            />
+            <Button colorScheme="red" className="my-3">
+              Создать имя
+            </Button>
+          </TabPanel>
+
+          <TabPanel>
+            {" "}
+            <Input placeholder="Имя" className="my-3" />
+            <Input
+              placeholder="Период в годах"
+              type="number"
+              className="my-3"
+            />
+            <Button colorScheme="red" className="my-3">
+              Продлить имя
+            </Button>
+          </TabPanel>
+          <TabPanel>
+            {" "}
+            <Input placeholder="Имя" className="my-3" />
+            <Button colorScheme="red" className="my-3">
+              Удалить имя
+            </Button>
+          </TabPanel>
+          <TabPanel>
+            {" "}
+            <Input placeholder="Цена" type="number" className="my-3" />
+            <Button colorScheme="red" className="my-3">
+              Продать имя
+            </Button>
+          </TabPanel>
         </TabPanels>
       </Tabs>
     </Container>

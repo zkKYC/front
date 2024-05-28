@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Metamask from "../../metamask";
+
 import { signMessage } from "@/utils/sign";
+import { shortenAddress } from "@/utils/shortenAddress";
 
 interface ClientStatus {
   isConnected: boolean;
@@ -76,7 +78,7 @@ const Button = () => {
         <Metamask />
       ) : clientStatus.isConnected ? (
         <span className="flex items-center h-12 px-5 rounded-lg bg-black font-bold text-white">
-          <h2>{clientStatus.address} ✅</h2>
+          <h2>{shortenAddress(clientStatus.address as string)} ✅</h2>
         </span>
       ) : (
         <>

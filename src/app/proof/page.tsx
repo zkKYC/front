@@ -20,20 +20,14 @@ const Proof = () => {
         <Heading as="h2" size="xl" mt={6} mb={2}>
           Доказательства
         </Heading>
-        <Text color={"gray.500"}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed risus
-          ipsum. Proin eget auctor lacus. Integer eu ultrices lectus. Integer
-          viverra pretium eros ut aliquet.
-        </Text>
+        <Text color={"gray.500"}>Тут вы можете создать доказательства</Text>
       </Box>
 
       <Tabs className="my-10">
         <TabList>
-          <Tab>Возраст</Tab>
-          <Tab>Прохождения KYC</Tab>
-          <Tab>Страна</Tab>
-          <Tab>Хеш документа</Tab>
-          <Tab>Регион</Tab>
+          <Tab>Мне больше 18 лет</Tab>
+          <Tab>Я прошел KYC</Tab>
+          <Tab>Доказательство данных паспорта</Tab>
         </TabList>
 
         <TabPanels>
@@ -52,9 +46,7 @@ const Proof = () => {
               Oтправить
             </Button>
           </TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel>куку</TabPanel>
         </TabPanels>
       </Tabs>
     </Container>

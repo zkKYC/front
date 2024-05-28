@@ -2,7 +2,9 @@ import type { NextComponentType, NextPageContext } from "next";
 
 interface Props {}
 
-const Metamask: NextComponentType<NextPageContext, {}, Props>  = (props: Props) => {
+const Metamask: NextComponentType<NextPageContext, {}, Props> = (
+  props: Props
+) => {
   return (
     <div
       style={{
