@@ -29,6 +29,18 @@ interface FormData {
   gender: string;
 }
 
+interface FormDataErrors {
+  evmAddress: string;
+  lastName: string;
+  firstName: string;
+  middleName: string;
+  country: string;
+  snils: string;
+  passport: string;
+  birthDate: string;
+  gender: string;
+}
+
 const Registration = () => {
   const [formData, setFormData] = useState<FormData>({
     evmAddress: "",
@@ -42,7 +54,7 @@ const Registration = () => {
     gender: "",
   });
 
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<FormDataErrors>>({});
   const [countryOptions, setCountryOptions] = useState<
     { label: string; value: string }[]
   >([]);
@@ -83,7 +95,7 @@ const Registration = () => {
   };
 
   const validateForm = () => {
-    let formErrors: Partial<FormData> = {};
+    let formErrors: Partial<FormDataErrors> = {};
     if (!formData.evmAddress || !ethers.isAddress(formData.evmAddress)) {
       formErrors.evmAddress = "Введите действительный EVM-адрес";
     }
