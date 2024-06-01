@@ -25,7 +25,7 @@ export async function fetchAndParseXML() {
       countryIsoMapping[name] = isoCode;
     });
 
-    console.log(countryIsoMapping);
+    //console.log(countryIsoMapping);
 
     return countryIsoMapping;
   } catch (error) {

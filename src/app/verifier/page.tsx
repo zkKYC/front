@@ -13,20 +13,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const MySbts = () => {
+const Verifier = () => {
   return (
     <Container>
       <Box textAlign="center" py={10} px={6}>
         <Heading as="h2" size="xl" mt={6} mb={2}>
-          Управление SBTs
+          Верификация
         </Heading>
-        <Text color={"gray.500"}>
-          Тут администратор может управлять SBT-1155.
-          <br />
-          id0 - паспорт
-          <br />
-          id1 - доменное Имя
-        </Text>
+        <Text color={"gray.500"}>Тут можно проверить доказательства</Text>
       </Box>
 
       <Tabs className="my-10">
@@ -38,24 +32,16 @@ const MySbts = () => {
 
         <TabPanels>
           <TabPanel>
-            <Input placeholder="Id" className="my-3" />
-            <Input placeholder="URI" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
           </TabPanel>
           <TabPanel>
-            <Input placeholder="To" className="my-3" />
-            <Input placeholder="Id" className="my-3" />
-            <Input placeholder="Amount" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
           </TabPanel>
           <TabPanel>
-            <Input placeholder="From" className="my-3" />
-            <Input placeholder="Id" className="my-3" />
-            <Input placeholder="Amount" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
@@ -66,4 +52,4 @@ const MySbts = () => {
   );
 };
 
-export default MySbts;
+export default Verifier;

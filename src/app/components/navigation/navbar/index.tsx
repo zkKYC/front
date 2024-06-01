@@ -46,7 +46,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/domain"
+                  href="/verifier"
                   className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
                 >
                   <p>Верификация</p>

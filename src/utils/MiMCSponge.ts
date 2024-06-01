@@ -16,7 +16,7 @@ export class MiMCSponge {
 
     const mimcHash = this.mimcSponge.hash(xL_in, xR_in, k);
     const hash = this.mimcSponge.F.toString(mimcHash);
-    console.log("MimcSponge hash:", hash);
+    //console.log("MimcSponge hash:", hash);
     return hash;
   }
 
@@ -28,7 +28,7 @@ export class MiMCSponge {
 
     const mimcHash = this.mimcSponge.multiHash(x, k, numOutputs);
     const hash = this.mimcSponge.F.toString(mimcHash);
-    console.log("MimcSponge multiHash:", hash);
+    //console.log("MimcSponge multiHash:", hash);
     return hash;
   }
 }
