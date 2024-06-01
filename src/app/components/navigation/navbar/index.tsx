@@ -14,18 +14,10 @@ const Navbar = () => {
             <ul className="hidden md:flex gap-x-6 text-black">
               <li>
                 <Link
-                  href="/registration"
+                  href="/admin"
                   className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
                 >
-                  <p>Регистрация</p>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sbts"
-                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
-                >
-                  <p>SBTs</p>
+                  <p>Панель администратора</p>
                 </Link>
               </li>
               <li>
@@ -66,6 +58,14 @@ const Navbar = () => {
                   className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
                 >
                   <p>Биржа доменов</p>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/transfer"
+                  className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md"
+                >
+                  <p>Переводы</p>
                 </Link>
               </li>
             </ul>

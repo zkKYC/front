@@ -10,13 +10,8 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import React from "react";
-
-import RegisterName from "./functions/registerName";
-import RenewName from "./functions/renewName";
-import SellName from "./functions/sellName";
-import RemoveName from "./functions/removeName";
-import ShowName from "./functions/showName";
 import TransferETH from "./functions/transferETH";
+import TransferERC20 from "./functions/transferERC20";
 
 const Domain = () => {
   return (
@@ -32,32 +27,17 @@ const Domain = () => {
 
       <Tabs className="my-10">
         <TabList>
-          <Tab flex="1">Регистрация </Tab>
-          <Tab flex="1">Продление </Tab>
-          <Tab flex="1">Удаление </Tab>
-          <Tab flex="1">Продажа </Tab>
-          <Tab flex="1">Ваша SBT</Tab>
+          <Tab flex="1">Перевод нативного токена </Tab>
+          <Tab flex="1">Перевод ERC20 токена </Tab>
         </TabList>
 
         <TabPanels>
           <TabPanel>
-            <RegisterName />
+            <TransferETH />
           </TabPanel>
 
           <TabPanel>
-            <RenewName />
-          </TabPanel>
-
-          <TabPanel>
-            <RemoveName />
-          </TabPanel>
-
-          <TabPanel>
-            <SellName />
-          </TabPanel>
-
-          <TabPanel>
-            <ShowName />
+            <TransferERC20 />
           </TabPanel>
         </TabPanels>
       </Tabs>
