@@ -16,7 +16,6 @@ import RenewName from "./functions/renewName";
 import SellName from "./functions/sellName";
 import RemoveName from "./functions/removeName";
 import ShowName from "./functions/showName";
-import TransferETH from "./functions/transferETH";
 
 const Domain = () => {
   return (
