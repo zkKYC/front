@@ -16,30 +16,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ethers } from "ethers";
 import Select from "react-select";
 import { fetchAndParseXML } from "../../utils/countries";
-
-interface FormData {
-  evmAddress: string;
-  lastName: string;
-  firstName: string;
-  middleName: string;
-  country: string;
-  snils: string;
-  passport: string;
-  birthDate: Date | null;
-  gender: string;
-}
-
-interface FormDataErrors {
-  evmAddress: string;
-  lastName: string;
-  firstName: string;
-  middleName: string;
-  country: string;
-  snils: string;
-  passport: string;
-  birthDate: string;
-  gender: string;
-}
+import {
+  registrationHandle,
+  FormData,
+  FormDataErrors,
+} from "./registrationHandle";
 
 const Registration = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -137,7 +118,9 @@ const Registration = () => {
           ? Math.floor(formData.birthDate.getTime() / 1000)
           : null,
       };
-      // Ваша логика отправки данных
+      // to contract
+      registrationHandle(dataToSend);
+
       console.log(dataToSend);
     }
   };
@@ -250,13 +233,12 @@ const Registration = () => {
         <FormControl isInvalid={!!errors.gender}>
           <Select
             options={[
-              { label: "Муж", value: "male" },
-              { label: "Жен", value: "female" },
+              { label: "Муж", value: "0" },
+              { label: "Жен", value: "1" },
             ]}
             placeholder="Пол"
             value={{
-              label:
-                gender === "male" ? "Муж" : gender === "female" ? "Жен" : "",
+              label: gender === "0" ? "Муж" : gender === "1" ? "Жен" : "Пол",
               value: gender,
             }}
             onChange={(selectedOption) =>
