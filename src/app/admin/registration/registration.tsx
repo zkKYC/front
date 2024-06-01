@@ -15,7 +15,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ethers } from "ethers";
 import Select from "react-select";
-import { fetchAndParseXML } from "../../utils/countries";
+import { fetchAndParseXML } from "../../../utils/countries";
 import {
   registrationHandle,
   FormData,
@@ -140,16 +140,9 @@ const Registration = () => {
 
   return (
     <Container>
-      <Box textAlign="center" py={10} px={6}>
-        <Heading as="h2" size="xl" mt={6} mb={2}>
-          Регистрация
-        </Heading>
-        <Text color={"gray.500"}>
-          Эта страница отвечает за административную регистрацию пользователей и
-          должна использоваться только банковскими органами. Они добавляют
-          информацию о пользователе, которая в дальнейшем используется для
-          подтверждения различных данных с помощью ZK-доказательств.
-        </Text>
+      <Box textAlign="center" py={1} px={1}>
+        <Heading as="h2" size="xl" mt={6} mb={2}></Heading>
+        <Text color={"gray.500"}></Text>
       </Box>
 
       <VStack spacing={4}>

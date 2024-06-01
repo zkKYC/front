@@ -1,55 +1,56 @@
+import React from "react";
 import {
+  Box,
   Container,
   Heading,
   Text,
-  Input,
-  Box,
-  Tabs,
   TabList,
-  TabPanels,
   Tab,
+  Tabs,
+  TabPanels,
   TabPanel,
+  Input,
   Button,
 } from "@chakra-ui/react";
-import React from "react";
 
-const Verifier = () => {
+const Proof = () => {
   return (
     <Container>
       <Box textAlign="center" py={10} px={6}>
         <Heading as="h2" size="xl" mt={6} mb={2}>
           Верификация
         </Heading>
-        <Text color={"gray.500"}>Тут можно проверить доказательства</Text>
+        <Text color={"gray.500"}>Тут вы можете проверить доказательства</Text>
       </Box>
 
       <Tabs className="my-10">
         <TabList>
-          <Tab>setURI</Tab>
-          <Tab>mint</Tab>
-          <Tab>burn</Tab>
+          <Tab>Мне больше 18 лет</Tab>
+          <Tab>Я прошел KYC</Tab>
+          <Tab>Доказательство данных паспорта</Tab>
         </TabList>
 
         <TabPanels>
           <TabPanel>
+            <Input placeholder="Секрет" className="my-3" />
+            <Input placeholder="Дата рождения" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
           </TabPanel>
           <TabPanel>
+            <Input placeholder="Хеш" className="my-3" />
+            <Input placeholder="Дерево меркла" className="my-3" />
+            <Input placeholder="Amount" className="my-3" />
             <Button colorScheme="red" className="my-3">
               Oтправить
             </Button>
           </TabPanel>
-          <TabPanel>
-            <Button colorScheme="red" className="my-3">
-              Oтправить
-            </Button>
-          </TabPanel>
+          <TabPanel>куку</TabPanel>
         </TabPanels>
       </Tabs>
     </Container>
   );
 };
 
-export default Verifier;
+export default Proof;
