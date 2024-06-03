@@ -2,26 +2,27 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import Button from "./Button";
+import { Stack } from "@chakra-ui/react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { href: "/admin", label: "Панель администратора" },
+    { href: "/admin", label: "Администратор" },
     { href: "/commit", label: "Обязательство" },
     { href: "/proof", label: "Доказательства" },
     { href: "/verifier", label: "Верификация" },
     { href: "/domain", label: "Домены" },
-    { href: "/offers", label: "Биржа доменов" },
+    { href: "/offers", label: "Биржа" },
     { href: "/transfer", label: "Переводы" },
   ];
 
   return (
-    <div className="w-full bg-white sticky top-0 z-10">
+    <div className="w-full bg-white sticky top-0 z-10 shadow-md">
       <br />
       <div className="container mx-auto px-4 h-full flex justify-between items-center">
         <Logo />
-        <div className="md:hidden">
+        <div className="flex-1 flex justify-end md:hidden">
           <button className="text-black" onClick={() => setIsOpen(!isOpen)}>
             <svg
               className="w-6 h-6"
@@ -45,12 +46,13 @@ const Navbar = () => {
           } md:flex gap-x-6 text-black flex-col md:flex-row`}
         >
           {navItems.map((item) => (
-            <li key={item.href}>
+            <li key={item.href} className="relative group">
               <Link href={item.href} legacyBehavior>
-                <a className="px-3 py-2 hover:bg-gray-200 hover:text-black block rounded-md">
+                <a className="px-3 py-2 block rounded-md transition-all duration-300">
                   {item.label}
                 </a>
               </Link>
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-transparent group-hover:bg-blue-500 transition-all duration-300 transform scale-x-0 group-hover:scale-x-100"></span>
             </li>
           ))}
         </ul>
@@ -59,10 +61,11 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden mt-2">
+        <div className="md:hidden mt-2 flex justify-end">
           <Button />
         </div>
       )}
+      <br />
     </div>
   );
 };
