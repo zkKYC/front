@@ -60,7 +60,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden mt-2 flex justify-end">
+        <div className="md:hidden mt-2 justify-end">
           <Button />
         </div>
       )}
