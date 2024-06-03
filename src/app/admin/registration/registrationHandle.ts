@@ -1,8 +1,9 @@
-import { MerkleTree, Element } from "fixed-merkle-tree";
+import { MerkleTree } from "fixed-merkle-tree";
 import { ethers } from "ethers";
 
 import { ZERO_VALUE, initTree } from "@/utils/tree";
 import { connectZKKYC } from "@/utils/provider";
+import { decimalToHex } from "@/utils/commons";
 
 export async function registrationHandle(dataToSend: DataToSend) {
   const { hashFunction, mimc, mimcSponge } = await initTree();
@@ -35,9 +36,14 @@ export async function registrationHandle(dataToSend: DataToSend) {
   tree.insert(middleNameHash);
   tree.insert(genderHash);
 
-  const con = await connectZKKYC();
+  const contract = await connectZKKYC();
 
-  console.log(await con.name());
+  const root = tree.root;
+
+  await contract.setPass(
+    dataToSend.evmAddress,
+    "0x" + decimalToHex(BigInt(root))
+  );
 }
 
 export interface FormData {
