@@ -77,17 +77,19 @@ const Button = () => {
       {!haveMetamask ? (
         <Metamask />
       ) : clientStatus.isConnected ? (
-        <span className="flex items-center h-12 px-5 rounded-lg bg-black font-bold text-white">
+        <span className="flex items-center justify-center h-12 px-5 rounded-lg bg-black font-bold text-white">
           <h2>{shortenAddress(clientStatus.address as string)} ✅</h2>
         </span>
       ) : (
         <>
-          <button
-            className="h-12 rounded-lg bg-black font-bold text-white px-5"
-            onClick={connectWeb3}
-          >
-            Connect Wallet
-          </button>
+          <span className="flex items-center justify-center h-12 px-5 rounded-lg bg-black font-bold text-white">
+            <button
+              className="h-12 rounded-lg  bg-black font-bold text-white px-5"
+              onClick={connectWeb3}
+            >
+              Connect Wallet
+            </button>
+          </span>
         </>
       )}
     </div>
