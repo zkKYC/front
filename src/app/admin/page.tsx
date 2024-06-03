@@ -32,13 +32,13 @@ const Admin = () => {
       <Tabs className="my-10">
         <TabList
           display="grid"
-          gridTemplateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
-          gap={2}
+          gridTemplateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }}
+          width="100%"
         >
-          <Tab flex="1">Регистрация</Tab>
-          <Tab flex="1">Установить URI</Tab>
-          <Tab flex="1">Чеканка</Tab>
-          <Tab flex="1">Сжигание</Tab>
+          <Tab>Регистрация</Tab>
+          <Tab>Установить URI</Tab>
+          <Tab>Чеканка</Tab>
+          <Tab>Сжигание</Tab>
         </TabList>
 
         <TabPanels>
