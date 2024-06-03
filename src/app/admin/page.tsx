@@ -30,7 +30,11 @@ const Admin = () => {
       </Box>
 
       <Tabs className="my-10">
-        <TabList>
+        <TabList
+          display="grid"
+          gridTemplateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+          gap={2}
+        >
           <Tab flex="1">Регистрация</Tab>
           <Tab flex="1">Установить URI</Tab>
           <Tab flex="1">Чеканка</Tab>

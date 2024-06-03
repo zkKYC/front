@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Metamask from "../../metamask";
 
 import { signMessage } from "@/utils/sign";
-import { shortenAddress } from "@/utils/shortenAddress";
+import { shortenAddress } from "@/utils/commons";
 
 interface ClientStatus {
   isConnected: boolean;

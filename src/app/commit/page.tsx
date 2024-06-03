@@ -1,7 +1,15 @@
+"use client";
+
 import React from "react";
 import { Container, Box, Heading, Text, Button } from "@chakra-ui/react";
 
+import { createCommit } from "./createCommit";
+
 const Commit = () => {
+  const handleCommit = async () => {
+    await createCommit();
+  };
+
   return (
     <Container>
       <Box textAlign="center" py={10} px={6}>
@@ -13,7 +21,7 @@ const Commit = () => {
           обязательство для фиксации того, что вы прошли процедуру верификации
           личности
         </Text>
-        <Button colorScheme="red" className="my-3">
+        <Button colorScheme="red" className="my-3" onClick={handleCommit}>
           Создать обязательство
         </Button>
       </Box>

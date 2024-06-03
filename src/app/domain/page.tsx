@@ -30,7 +30,11 @@ const Domain = () => {
       </Box>
 
       <Tabs className="my-10">
-        <TabList>
+        <TabList
+          display="grid"
+          gridTemplateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 1fr)" }}
+          gap={2}
+        >
           <Tab flex="1">Регистрация </Tab>
           <Tab flex="1">Продление </Tab>
           <Tab flex="1">Удаление </Tab>
