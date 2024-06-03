@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import Button from "./Button";
-import { Stack } from "@chakra-ui/react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
