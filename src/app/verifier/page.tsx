@@ -9,9 +9,10 @@ import {
   Tabs,
   TabPanels,
   TabPanel,
-  Input,
-  Button,
 } from "@chakra-ui/react";
+import Commitment from "./functions/commitment";
+import AgeProof from "./functions/ageProof";
+import PassProof from "./functions/passProof";
 
 const Proof = () => {
   return (
@@ -32,21 +33,14 @@ const Proof = () => {
 
         <TabPanels>
           <TabPanel>
-            <Input placeholder="Секрет" className="my-3" />
-            <Input placeholder="Дата рождения" className="my-3" />
-            <Button colorScheme="red" className="my-3">
-              Oтправить
-            </Button>
+            <AgeProof />
           </TabPanel>
           <TabPanel>
-            <Input placeholder="Хеш" className="my-3" />
-            <Input placeholder="Дерево меркла" className="my-3" />
-            <Input placeholder="Amount" className="my-3" />
-            <Button colorScheme="red" className="my-3">
-              Oтправить
-            </Button>
+            <Commitment />
           </TabPanel>
-          <TabPanel>куку</TabPanel>
+          <TabPanel>
+            <PassProof />
+          </TabPanel>
         </TabPanels>
       </Tabs>
     </Container>
