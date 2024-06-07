@@ -9,7 +9,6 @@ const Navbar = () => {
   const navItems = [
     { href: "/admin", label: "Администратор" },
     { href: "/commit", label: "Обязательство" },
-    { href: "/proof", label: "Доказательства" },
     { href: "/verifier", label: "Верификация" },
     { href: "/domain", label: "Домены" },
     { href: "/offers", label: "Биржа" },
