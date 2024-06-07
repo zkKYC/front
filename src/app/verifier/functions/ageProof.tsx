@@ -101,8 +101,8 @@ async function verify(
 
     console.log("inputs", input);
 
-    const wasmPath = "./ageProof/age.wasm";
-    const zkeyPath = "./ageProof/age.zkey";
+    const wasmPath = "https://zkkyc.github.io/front/ageProof/age.wasm";
+    const zkeyPath = "https://zkkyc.github.io/front/ageProof/age.zkey";
 
     const { proof, publicSignals } = await groth16.fullProve(
       input,
