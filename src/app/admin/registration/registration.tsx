@@ -16,14 +16,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ethers } from "ethers";
 import Select from "react-select";
 import { fetchAndParseXML } from "../../../utils/countries";
-import {
-  registrationHandle,
-  FormData,
-  FormDataErrors,
-} from "./registrationHandle";
+import { registrationHandle } from "./registrationHandle";
+import { RegFormData, RegFormDataErrors } from "@/utils/interfaces";
 
 const Registration = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<RegFormData>({
     evmAddress: "",
     lastName: "",
     firstName: "",
@@ -35,7 +32,7 @@ const Registration = () => {
     gender: "",
   });
 
-  const [errors, setErrors] = useState<Partial<FormDataErrors>>({});
+  const [errors, setErrors] = useState<Partial<RegFormDataErrors>>({});
   const [countryOptions, setCountryOptions] = useState<
     { label: string; value: string }[]
   >([]);
@@ -76,7 +73,7 @@ const Registration = () => {
   };
 
   const validateForm = () => {
-    let formErrors: Partial<FormDataErrors> = {};
+    let formErrors: Partial<RegFormDataErrors> = {};
     if (!formData.evmAddress || !ethers.isAddress(formData.evmAddress)) {
       formErrors.evmAddress = "Введите действительный EVM-адрес";
     }

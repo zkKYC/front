@@ -1,17 +1,25 @@
 import { connectZKKYC, getAddr } from "@/utils/provider";
-import { decimalToHex, toFixedHex, getRandomBigInt } from "@/utils/commons";
-import { initTree } from "@/utils/tree";
+import { getRandomBigInt, getCommitment, downloadJSON } from "@/utils/commons";
+import { CommitmentFile } from "@/utils/interfaces";
 
 export async function createCommit() {
   try {
-    const { mimcSponge } = await initTree();
     const contract = await connectZKKYC();
 
-    const secret = toFixedHex(getRandomBigInt(255));
-    const addr = toFixedHex(BigInt(await getAddr()));
-    const commitment = mimcSponge.multiHash([addr, secret]);
+    const secret = getRandomBigInt(255);
+    const addr = await getAddr();
 
-    await contract.createCommitment("0x" + decimalToHex(BigInt(commitment)));
+    const commitment = await getCommitment(secret, addr);
+
+    const data: CommitmentFile = {
+      secret: secret.toString(),
+      addr: addr,
+      commitment: commitment,
+    };
+
+    downloadJSON(data, "commitment");
+
+    await contract.createCommitment(commitment);
   } catch (error) {
     console.error("Ошибка при создании обязательства:", error);
   }

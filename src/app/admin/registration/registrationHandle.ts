@@ -3,9 +3,10 @@ import { ethers } from "ethers";
 
 import { ZERO_VALUE, initTree } from "@/utils/tree";
 import { connectZKKYC } from "@/utils/provider";
-import { decimalToHex } from "@/utils/commons";
+import { decimalToHex, downloadJSON } from "@/utils/commons";
+import { RegDataToSend, PassFile } from "@/utils/interfaces";
 
-export async function registrationHandle(dataToSend: DataToSend) {
+export async function registrationHandle(dataToSend: RegDataToSend) {
   const { hashFunction, mimc, mimcSponge } = await initTree();
   const tree = new MerkleTree(3, undefined, {
     hashFunction,
@@ -38,38 +39,12 @@ export async function registrationHandle(dataToSend: DataToSend) {
 
   const contract = await connectZKKYC();
 
-  const root = tree.root;
+  const root = "0x" + decimalToHex(BigInt(tree.root));
 
-  await contract.setPass(
-    dataToSend.evmAddress,
-    "0x" + decimalToHex(BigInt(root))
-  );
-}
+  //await contract.setPass(dataToSend.evmAddress, root);
 
-export interface FormData {
-  evmAddress: string;
-  lastName: string;
-  firstName: string;
-  middleName: string;
-  country: string;
-  snils: string;
-  passport: string;
-  birthDate: Date | null;
-  gender: string;
-}
+  const data: PassFile = dataToSend as PassFile;
+  data.root = root;
 
-export interface FormDataErrors {
-  evmAddress: string;
-  lastName: string;
-  firstName: string;
-  middleName: string;
-  country: string;
-  snils: string;
-  passport: string;
-  birthDate: string;
-  gender: string;
-}
-
-interface DataToSend extends Omit<FormData, "birthDate"> {
-  birthDate: number | null;
+  downloadJSON(data, "pass");
 }
