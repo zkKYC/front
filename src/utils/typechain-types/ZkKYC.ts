@@ -37,7 +37,6 @@ export interface ZkKYCInterface extends Interface {
       | "createCommitment"
       | "currentRootIndex"
       | "filledSubtrees"
-      | "getAddress"
       | "getHashKYC"
       | "getLastRoot"
       | "globalNonce"
@@ -47,6 +46,7 @@ export interface ZkKYCInterface extends Interface {
       | "levels"
       | "mint"
       | "name"
+      | "nameToAddress"
       | "names"
       | "nextIndex"
       | "offers"
@@ -128,7 +128,6 @@ export interface ZkKYCInterface extends Interface {
     functionFragment: "filledSubtrees",
     values: [BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "getAddress", values: [string]): string;
   encodeFunctionData(
     functionFragment: "getHashKYC",
     values: [AddressLike]
@@ -156,6 +155,10 @@ export interface ZkKYCInterface extends Interface {
     values: [AddressLike, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "nameToAddress",
+    values: [string]
+  ): string;
   encodeFunctionData(functionFragment: "names", values: [AddressLike]): string;
   encodeFunctionData(functionFragment: "nextIndex", values?: undefined): string;
   encodeFunctionData(
@@ -244,7 +247,6 @@ export interface ZkKYCInterface extends Interface {
     functionFragment: "filledSubtrees",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "getAddress", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getHashKYC", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "getLastRoot",
@@ -266,6 +268,10 @@ export interface ZkKYCInterface extends Interface {
   decodeFunctionResult(functionFragment: "levels", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "nameToAddress",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "names", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "nextIndex", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "offers", data: BytesLike): Result;
@@ -548,8 +554,6 @@ export interface ZkKYC extends BaseContract {
 
   filledSubtrees: TypedContractMethod<[arg0: BigNumberish], [string], "view">;
 
-  getAddress: TypedContractMethod<[name: string], [string], "view">;
-
   getHashKYC: TypedContractMethod<[user: AddressLike], [string], "view">;
 
   getLastRoot: TypedContractMethod<[], [string], "view">;
@@ -575,6 +579,8 @@ export interface ZkKYC extends BaseContract {
   >;
 
   name: TypedContractMethod<[], [string], "view">;
+
+  nameToAddress: TypedContractMethod<[name: string], [string], "view">;
 
   names: TypedContractMethod<[arg0: AddressLike], [string], "view">;
 
@@ -710,9 +716,6 @@ export interface ZkKYC extends BaseContract {
     nameOrSignature: "filledSubtrees"
   ): TypedContractMethod<[arg0: BigNumberish], [string], "view">;
   getFunction(
-    nameOrSignature: "getAddress"
-  ): TypedContractMethod<[name: string], [string], "view">;
-  getFunction(
     nameOrSignature: "getHashKYC"
   ): TypedContractMethod<[user: AddressLike], [string], "view">;
   getFunction(
@@ -747,6 +750,9 @@ export interface ZkKYC extends BaseContract {
   getFunction(
     nameOrSignature: "name"
   ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "nameToAddress"
+  ): TypedContractMethod<[name: string], [string], "view">;
   getFunction(
     nameOrSignature: "names"
   ): TypedContractMethod<[arg0: AddressLike], [string], "view">;
