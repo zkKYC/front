@@ -1,1 +1,5 @@
-{}
+{
+  "name": "Domain",
+  "description": "Siberium Name Service",
+  "image": "https://zkkyc.github.io/front/images/domain.png"
+}

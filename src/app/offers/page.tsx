@@ -9,41 +9,62 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
+import { connectZKKYC } from "@/utils/provider";
+import { shortenAddress, timestampToDate } from "@/utils/commons";
+import { ethers } from "ethers";
 
 interface Domain {
   name: string;
   hash: string;
+  fullhash: string;
   imageUrl: string;
   price: string;
   seller: string;
+  time: string;
 }
 
-// Функция для сбора событий контракта (пока что заполняем данными по умолчанию)
-const fetchDomainEvents = (): Domain[] => {
-  return [
-    {
-      name: "example1.sib",
-      hash: "0x00",
-      imageUrl: "https://zkkyc.github.io/front/images/pass.png",
-      price: "1 ETH",
-      seller: "0xSellerAddress1",
-    },
-    {
-      name: "example2.sib",
-      hash: "0x01",
-      imageUrl: "https://zkkyc.github.io/front/images/pass.png",
-      price: "2 ETH",
-      seller: "0xSellerAddress2",
-    },
-  ];
+const fetchDomainEvents = async (): Promise<Domain[]> => {
+  const contract = await connectZKKYC();
+  const sellOfferEvent = contract.filters.SellOffer();
+  const events = await contract.queryFilter(sellOfferEvent);
+
+  const len = events.length;
+
+  let domains: Domain[] = [];
+
+  for (let i = 0; i < len; i++) {
+    const isOffer = await contract.offers(events[i].args[0]);
+
+    console.log(isOffer);
+
+    if (isOffer[1] !== ethers.ZeroAddress) {
+      const owner = await contract.nameToAddress(events[i].args[2]);
+      const { expires } = await contract.records(events[i].args[0]);
+      const date = timestampToDate(expires);
+
+      domains.push({
+        name: events[i].args[2],
+        hash: shortenAddress(events[i].args[0]),
+        fullhash: events[i].args[0],
+        imageUrl: "https://zkkyc.github.io/front/images/pass.png",
+        price: ethers.formatEther(events[i].args[1]),
+        seller: shortenAddress(owner),
+        time: date,
+      });
+    }
+  }
+
+  return domains;
 };
 
 const DomainCard = ({
   name,
   hash,
+  fullhash,
   imageUrl,
   price,
   seller,
+  time,
   onBuy,
 }: Domain & { onBuy: (domain: Domain) => void }) => (
   <Box
@@ -70,10 +91,15 @@ const DomainCard = ({
       <Text mt="2" color="gray.500">
         Продавец: {seller}
       </Text>
+      <Text mt="2" color="gray.500">
+        Зарегистрирован до: {time}
+      </Text>
       <Button
         mt={4}
         colorScheme="red"
-        onClick={() => onBuy({ name, hash, imageUrl, price, seller })}
+        onClick={() =>
+          onBuy({ name, hash, fullhash, imageUrl, price, seller, time })
+        }
       >
         Купить это имя
       </Button>
@@ -85,13 +111,20 @@ const Domain = () => {
   const [domains, setDomains] = useState<Domain[]>([]);
 
   useEffect(() => {
-    const events = fetchDomainEvents();
-    setDomains(events);
+    const fetchEvents = async () => {
+      const events = await fetchDomainEvents();
+      setDomains(events);
+    };
+
+    fetchEvents();
   }, []);
 
-  const handleBuyDomain = (domain: Domain) => {
+  const handleBuyDomain = async (domain: Domain) => {
     console.log("Покупка домена:", domain);
-    // Здесь вы можете вызвать функцию контракта для покупки домена
+    const contract = await connectZKKYC();
+    await contract.buyName(domain.fullhash, {
+      value: ethers.parseEther(domain.price),
+    });
   };
 
   return (
