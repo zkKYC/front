@@ -50,3 +50,24 @@ export function downloadJSON(data: any, name: string) {
   a.click();
   document.body.removeChild(a);
 }
+
+export function timestampToDate(timestamp: bigint): string {
+  const date = new Date(Number(timestamp * BigInt(1000)));
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
+    day
+  ).padStart(2, "0")} ${String(hours).padStart(2, "0")}:${String(
+    minutes
+  ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+  // console.log("time", formattedDate);
+  // console.log("data", date);
+  return formattedDate;
+}

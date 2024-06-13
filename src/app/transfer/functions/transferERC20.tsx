@@ -30,6 +30,7 @@ const TransferERC20 = () => {
     else {
       try {
         console.log(ethers.parseUnits(amount, "ether"));
+        // TODO decimals
         await connectERC20.transfer(addr, ethers.parseUnits(amount, "ether"));
       } catch (e) {
         console.log(e);
