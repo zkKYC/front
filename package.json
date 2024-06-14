@@ -19,6 +19,7 @@
     "circomlibjs": "^0.1.7",
     "ethers": "^6.12.1",
     "fixed-merkle-tree": "^0.7.3",
+    "formik": "^2.4.6",
     "framer-motion": "^11.2.6",
     "fs": "^0.0.1-security",
     "next": "14.2.3",

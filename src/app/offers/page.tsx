@@ -46,7 +46,7 @@ const fetchDomainEvents = async (): Promise<Domain[]> => {
         name: events[i].args[2],
         hash: shortenAddress(events[i].args[0]),
         fullhash: events[i].args[0],
-        imageUrl: "https://zkkyc.github.io/front/images/pass.png",
+        imageUrl: "https://zkkyc.github.io/front/images/domain.png",
         price: ethers.formatEther(events[i].args[1]),
         seller: shortenAddress(owner),
         time: date,
